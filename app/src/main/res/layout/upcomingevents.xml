@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="3dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#166B3F"
+
+        android:orientation="horizontal"
+        android:focusable="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linearclick"
+            android:clickable="true"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/qwer"
+                android:layout_marginTop="15dp"
+                android:padding="5sp"
+                android:orientation="vertical">
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFD32D"
+                    android:text="classes"
+                    android:clickable="false"
+                    android:textSize="24sp"
+                    android:id="@+id/title"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Title"
+                    android:clickable="false"
+                    android:textSize="24sp"
+                    android:id="@+id/subname"/>
+            </LinearLayout>
+            <ImageView
+                android:layout_width="160dp"
+                android:layout_height="150dp"
+                android:padding="10dp"
+                android:clickable="false"
+                android:id="@+id/icon"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:src="@mipmap/ic_launcher"/>
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

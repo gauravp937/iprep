@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "14819090296",
+    "firebase_url": "https://i-prep-82c62-default-rtdb.firebaseio.com",
+    "project_id": "i-prep-82c62",
+    "storage_bucket": "i-prep-82c62.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14819090296:android:32a21a250e60c3bec7b28d",
+        "android_client_info": {
+          "package_name": "com.example.lamami"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "14819090296-9di1458o1pptprjfj6m5ivk4rpfs745l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lamami",
+            "certificate_hash": "6ade52c1ad0d91f88bf3c7fe21e2727094cf8f2f"
+          }
+        },
+        {
+          "client_id": "14819090296-etvcv5kr3hg127uscp4q2ltihjjl2s09.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCepILR6NhDCl_oj8FDxbO9f72aXYkJKgE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "14819090296-etvcv5kr3hg127uscp4q2ltihjjl2s09.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
