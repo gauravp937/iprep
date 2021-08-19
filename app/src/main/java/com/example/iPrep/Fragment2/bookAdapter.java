@@ -6,26 +6,26 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.iPrep.Fragment1.VideoLecturestopics;
+import com.example.iPrep.Fragment1.videosmodel;
 import com.example.iPrep.R;
-import com.example.iPrep.ReadBook.ReadingBook;
-
 
 import java.util.List;
 
 public class bookAdapter extends RecyclerView.Adapter<bookAdapter.ViewHolder> {
-    private Context mContext;
-    private List<bookmodel> bookmodelList;
 
-    public bookAdapter(Context mContext, List<bookmodel> bookmodelList) {
+    private Context mContext;
+    private List<booksmodel> booksmodelList;
+
+    public bookAdapter(Context mContext, List<booksmodel> booksmodelList) {
         this.mContext = mContext;
-        this.bookmodelList = bookmodelList;
+        this.booksmodelList = booksmodelList;
     }
 
     @NonNull
@@ -37,45 +37,45 @@ public class bookAdapter extends RecyclerView.Adapter<bookAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        final bookmodel Bookmodel = bookmodelList.get(i);
+        final booksmodel classmodel = booksmodelList.get(i);
 
-        viewHolder.classes.setText(Bookmodel.getTopicname());
-        viewHolder.subject.setText(Bookmodel.getName());
+        viewHolder.classes.setText(classmodel.getName());
         viewHolder.topLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS",Context.MODE_PRIVATE).edit();
-                editor.putLong("id",Bookmodel.getId());
+                editor.putString("idd",classmodel.getName());
+                editor.putLong("uid",classmodel.getUid());
                 editor.apply();
-                Intent intent = new Intent(mContext, ReadingBook.class);
+                Intent intent = new Intent(mContext, BooksLecturestopics.class);
                 mContext.startActivity(intent);
             }
         });
+
 
     }
 
     @Override
     public int getItemCount() {
-        return bookmodelList.size();
+        return booksmodelList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView icon;
-        public TextView subject,classes;
-        RelativeLayout topLayout;
 
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
+    public TextView classes;
+    RelativeLayout topLayout;
 
 
-            classes = itemView.findViewById(R.id.title);
-            subject = itemView.findViewById(R.id.subname);
-            icon = itemView.findViewById(R.id.icon);
-            topLayout = itemView.findViewById(R.id.linearclick);
+    public ViewHolder(@NonNull View itemView) {
+        super(itemView);
+
+
+        classes = itemView.findViewById(R.id.title);
+        topLayout = itemView.findViewById(R.id.linearclick);
 
 
 
-        }
     }
+}
 }

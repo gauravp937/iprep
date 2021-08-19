@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity2">
+    tools:context="com.example.iPrep.Fragment1.VideoLecturestopics">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,50 +12,50 @@
         android:orientation="vertical"
         android:id="@+id/appbarlayout">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/bar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#FFD32D">
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <RelativeLayout
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:background="#FFD32D">
 
-
-                <TextView
-                    android:id="@+id/i_Prep"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_toStartOf="@+id/notification"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:fontFamily="@font/andada"
-                    android:text="i-Prep"
-                    android:textAlignment="center"
-                    android:textColor="#074A51"
-                    android:textSize="26sp"
-                    android:textStyle="bold" />
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/notification"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerInParent="true"
-                    android:layout_marginEnd="12dp"
-                    android:src="@drawable/notification" />
 
-            </RelativeLayout>
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
+                    <TextView
+                        android:id="@+id/i_Prep"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/notification"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@font/andada"
+                        android:text="i-Prep"
+                        android:textAlignment="center"
+                        android:textColor="#074A51"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/notification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/notification" />
+
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -91,7 +91,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="#FFD32D"
-                            android:text="Subjects"
+                            android:text="All Videos"
                             android:layout_marginEnd="10dp"
                             android:textAlignment="center"
                             android:clickable="false"

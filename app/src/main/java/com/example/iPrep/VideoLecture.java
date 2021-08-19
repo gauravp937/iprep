@@ -26,6 +26,7 @@ public class VideoLecture extends AppCompatActivity {
         pager2.setAdapter(adapter);
         tabLayout.addTab(tabLayout.newTab().setText("Videos"));
         tabLayout.addTab(tabLayout.newTab().setText("Books"));
+        tabLayout.addTab(tabLayout.newTab().setText("Audiobooks"));
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

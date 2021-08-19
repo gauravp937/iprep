@@ -18,12 +18,13 @@ public class FragmentAdapter extends FragmentStateAdapter {
         {
             case 1:
                 return new SecondFragment();
+
         }
         return  new FirstFragment();
     }
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }

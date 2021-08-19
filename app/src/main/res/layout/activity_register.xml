@@ -130,6 +130,7 @@
                     android:autofillHints=""
                     android:ems="10"
                     android:hint="Board"
+                    android:inputType="phone"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#FBFBFB" />
             </com.google.android.material.textfield.TextInputLayout>

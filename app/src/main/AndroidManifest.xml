@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ReadBook.ReadingBook"></activity>
+        <activity android:name=".Fragment2.BooksLecturestopics"></activity>
+        <activity android:name=".Fragment1.VideoLecturestopics" />
+        <activity android:name=".Fragment2.ReadingBook" />
         <activity android:name=".VideoLecture" />
         <activity android:name=".Register" />
         <activity android:name=".LoginActivity" />

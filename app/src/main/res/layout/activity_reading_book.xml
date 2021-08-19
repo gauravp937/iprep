@@ -4,13 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.iPrep.ReadBook.ReadingBook">
+    tools:context="com.example.iPrep.Fragment2.ReadingBook">
 
+    <com.github.barteksc.pdfviewer.PDFView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/pdfviewer"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:text="Pdf viewer will display all the data. Need some extr time to complete the task."
-        android:textSize="30sp"/>
+        android:textSize="30sp"
+        android:visibility="invisible"
+        android:id="@+id/text1"/>
 
 </RelativeLayout>

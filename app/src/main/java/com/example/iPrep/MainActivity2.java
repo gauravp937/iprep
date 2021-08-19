@@ -5,13 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,13 +33,15 @@ public class MainActivity2 extends AppCompatActivity {
     private List<classmodel> classmodelList;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
-    String id;
+    FirebaseUser firebaseUser;
+    DatabaseReference id;
+    String classes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         signout = findViewById(R.id.notification);
 
         mRecyclerView = findViewById(R.id.recyclerview);
@@ -45,10 +50,13 @@ public class MainActivity2 extends AppCompatActivity {
         mRecyclerView.setVisibility(View.VISIBLE);
 
         classmodelList = new ArrayList<>();
-        classesadapter = new classesadapter(this,classmodelList,id);
+        classesadapter = new classesadapter(this,classmodelList);
         mRecyclerView.setAdapter(classesadapter);
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
+        classes = preferences.getString("classes",null);
 
-        reference = FirebaseDatabase.getInstance().getReference("classes");
+
+        reference = FirebaseDatabase.getInstance().getReference("subjects").child("cbse").child("english").child(classes);
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override

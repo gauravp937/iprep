@@ -1,4 +1,4 @@
-package com.example.iPrep;
+package com.example.iPrep.Fragment2;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,47 +9,43 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
-
+import com.example.iPrep.R;
 
 import java.util.List;
 
-public class classesadapter extends RecyclerView.Adapter<classesadapter.ViewHolder> {
+public class BookLecturesAdapter extends RecyclerView.Adapter<BookLecturesAdapter.ViewHolder>{
 
     private Context mContext;
-    private List<classmodel> classmodelslists;
+    private List<BookLecturesModel> bookLecturesModelList;
 
-    public classesadapter(Context mContext, List<classmodel> classmodelslists) {
+    public BookLecturesAdapter(Context mContext, List<BookLecturesModel> bookLecturesModelList) {
         this.mContext = mContext;
-        this.classmodelslists = classmodelslists;
+        this.bookLecturesModelList = bookLecturesModelList;
     }
 
     @NonNull
     @Override
-    public classesadapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.upcomingevents, parent, false);
-        return new ViewHolder(view);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(mContext).inflate(R.layout.bookslecturetopic, parent, false);
+        return new BookLecturesAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull classesadapter.ViewHolder viewHolder, int i) {
-    final classmodel classmodel = classmodelslists.get(i);
-        Glide.with(mContext).load(classmodel.getIcon()).into(viewHolder.icon);
-        viewHolder.classes.setText(classmodel.getName());
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+        final BookLecturesModel bookLecturesModel = bookLecturesModelList.get(i);
 
-        viewHolder.subject.setText(classmodel.getShort_name());
-
+        viewHolder.classes.setText(bookLecturesModel.getTopicName());
+        viewHolder.subject.setText(bookLecturesModel.getName());
         viewHolder.topLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS",Context.MODE_PRIVATE).edit();
-                editor.putString("id",classmodel.getId());
+                editor.putString("linkk",bookLecturesModel.getOnlineLink());
                 editor.apply();
-                Intent intent = new Intent(mContext,VideoLecture.class);
+                Intent intent = new Intent(mContext, ReadingBook.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
             }
         });
@@ -57,11 +53,10 @@ public class classesadapter extends RecyclerView.Adapter<classesadapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return classmodelslists.size();
+        return bookLecturesModelList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
         public ImageView icon;
         public TextView subject,classes;
         RelativeLayout topLayout;

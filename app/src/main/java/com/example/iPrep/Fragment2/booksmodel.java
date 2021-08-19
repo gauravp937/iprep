@@ -1,11 +1,11 @@
-package com.example.iPrep.Fragment1;
+package com.example.iPrep.Fragment2;
 
-public class videosmodel {
+public class booksmodel {
     String name;
     Long uid;
 
 
-    public videosmodel() {
+    public booksmodel() {
     }
 
     public Long getUid() {

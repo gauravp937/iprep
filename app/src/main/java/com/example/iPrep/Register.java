@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -63,7 +64,7 @@ public class Register extends AppCompatActivity {
                 String password = mPassword.getText().toString().trim();
                 final String mboard = board.getText().toString().trim();
                 final String mclasses = classes.getText().toString().trim();
-                String emailPattern = "[a-zA-Z0-9._-]=a-z]+\\.+[a-z]+";
+
 
                 if(TextUtils.isEmpty(fullname)){
                     mFullName.setError("Name is required");
@@ -80,14 +81,12 @@ public class Register extends AppCompatActivity {
                 if(TextUtils.isEmpty(email)) {
                     mEmail.setError("Email is required");
                     return;
-                }else if (!TextUtils.isEmpty(emailPattern)) {
-                    mEmail.setError("Email is required");
-                    return;
                 }
                 if(TextUtils.isEmpty(password)){
                     mPassword.setError("Password is required");
                     return;
                 }
+
 
                 if(password.length() < 6){
                     mPassword.setError("Password is too short");
@@ -118,6 +117,9 @@ public class Register extends AppCompatActivity {
                                         Intent intent =new Intent(Register.this,MainActivity2.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                         Toast.makeText(Register.this,"User Created.",Toast.LENGTH_SHORT).show();
+                                        SharedPreferences.Editor editor = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
+                                        editor.putString("classes", mclasses);
+                                        editor.apply();
                                         startActivity(intent);
                                     }
                                 }

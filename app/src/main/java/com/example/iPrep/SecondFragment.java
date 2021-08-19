@@ -16,8 +16,7 @@ import android.view.ViewGroup;
 import com.example.iPrep.Fragment1.videoAdapter;
 import com.example.iPrep.Fragment1.videosmodel;
 import com.example.iPrep.Fragment2.bookAdapter;
-import com.example.iPrep.Fragment2.bookmodel;
-import com.example.iPrep.R;
+import com.example.iPrep.Fragment2.booksmodel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,11 +28,13 @@ import java.util.List;
 
 public class SecondFragment extends Fragment {
     private RecyclerView recyclerView;
-    private bookAdapter bookAdapter;
-    private List<bookmodel> mmbookmodellist;
+
+    private bookAdapter bookadapter;
+    private List<booksmodel> mmBooksmodellist;
 
     DatabaseReference reference;
-    long id;
+    String id;
+    String classes;
 
 
     @Override
@@ -45,25 +46,29 @@ public class SecondFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        mmbookmodellist = new ArrayList<>();
-        bookAdapter = new bookAdapter(getContext(),mmbookmodellist);
-        recyclerView.setAdapter(bookAdapter);
+        mmBooksmodellist = new ArrayList<>();
+        bookadapter = new bookAdapter(getContext(),mmBooksmodellist);
+        recyclerView.setAdapter(bookadapter);
 
         SharedPreferences preferences = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
-        id = preferences.getLong("id",0);
+        id = preferences.getString("id",null);
+        SharedPreferences preferences1 = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
+        classes = preferences1.getString("classes",null);
 
-        reference = FirebaseDatabase.getInstance().getReference("classes").child(String.valueOf(id)).child("videolectures");
+        reference = FirebaseDatabase.getInstance().getReference("topics").child("cbse").child("english").child(classes).child("subjects").child(id).child("books_ncert");
+
+
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot datasnapshot : snapshot.getChildren()){
-                    bookmodel videosmodel1 = datasnapshot.getValue(bookmodel.class);
-                    mmbookmodellist.add(videosmodel1);
+                    booksmodel videosmodel1 = datasnapshot.getValue(booksmodel.class);
+                    mmBooksmodellist.add(videosmodel1);
 
                 }
-                bookAdapter = new bookAdapter(getContext(),mmbookmodellist);
-                recyclerView.setAdapter(bookAdapter);
+                bookadapter = new bookAdapter(getContext(),mmBooksmodellist);
+                recyclerView.setAdapter(bookadapter);
             }
 
             @Override

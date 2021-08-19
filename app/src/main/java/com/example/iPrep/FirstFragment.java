@@ -33,7 +33,8 @@ public class FirstFragment extends Fragment {
     private List<videosmodel> mmVideosmodellist;
 
     DatabaseReference reference;
-    long id;
+    String id;
+    String classes;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,9 +49,13 @@ public class FirstFragment extends Fragment {
         recyclerView.setAdapter(videoadapter);
 
         SharedPreferences preferences = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
-        id = preferences.getLong("id",0);
+        id = preferences.getString("id",null);
+        SharedPreferences preferences1 = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
+        classes = preferences.getString("classes",null);
 
-        reference = FirebaseDatabase.getInstance().getReference("classes").child(String.valueOf(id)).child("Books");
+        reference = FirebaseDatabase.getInstance().getReference("topics").child("cbse").child("english").child(classes).child("subjects").child(id).child("video_lessons");
+
+
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
